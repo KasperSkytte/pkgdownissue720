@@ -39,11 +39,11 @@ Execution halted
 Error: `x` must be a string or a R connection
 ```
 
-#The function amp_alphadiv works fine
+# The function amp_alphadiv works fine
 ```{r}
 library(pkgdownissue720)
 library(repmis)
-repmis::source_data("https://raw.githubusercontent.com/madsalbertsen/ampvis2/master/data/AalborgWWTPs.rda", cache = FALSE)
+repmis::source_data("https://raw.githubusercontent.com/madsalbertsen/ampvis2/master/data/AalborgWWTPs.rda")
 test <- amp_alphadiv(AalborgWWTPs)
 head(test)
 ```
