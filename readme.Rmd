@@ -1,0 +1,49 @@
+---
+title: "readme"
+author: "KSA"
+date: "June 15, 2018"
+output: html_document
+---
+
+# pkgdownissue720
+For `pkgdown` [issue 720](https://github.com/r-lib/pkgdown/issues/720). Running `pkgdown::clean_site(); pkgdown::build_site()` gives error `Error: `x` must be a string or a R connection`:
+
+```r
+pkgdown::clean_site(); pkgdown::build_site()
+══ Building pkgdown site ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Reading from: '/home/kapper/Dropbox/R/github/pkgdownissue720'
+Writing to:   '/home/kapper/Dropbox/R/github/pkgdownissue720/docs'
+── Initialising site ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Copying '../../../../R/x86_64-pc-linux-gnu-library/3.5/pkgdown/assets/docsearch.css' to 'docsearch.css'
+Copying '../../../../R/x86_64-pc-linux-gnu-library/3.5/pkgdown/assets/docsearch.js' to 'docsearch.js'
+Copying '../../../../R/x86_64-pc-linux-gnu-library/3.5/pkgdown/assets/link.svg' to 'link.svg'
+Copying '../../../../R/x86_64-pc-linux-gnu-library/3.5/pkgdown/assets/pkgdown.css' to 'pkgdown.css'
+Copying '../../../../R/x86_64-pc-linux-gnu-library/3.5/pkgdown/assets/pkgdown.js' to 'pkgdown.js'
+● Edit '_pkgdown.yml'
+✔ Adding '^_pkgdown\\.yml$' to '.Rbuildignore'
+✔ Adding '^docs$' to '.Rbuildignore'
+── Building home ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Writing 'authors.html'
+Writing 'LICENSE-text.html'
+Writing 'index.html'
+── Building function reference ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Updating pkgdownissue720 documentation
+Loading pkgdownissue720
+Writing NAMESPACE
+Writing NAMESPACE
+Writing 'reference/index.html'
+Loading pkgdownissue720
+Reading 'man/amp_alphadiv.Rd'
+Error: `x` must be a string or a R connection
+Execution halted
+Error: `x` must be a string or a R connection
+```
+
+#The function amp_alphadiv works fine
+```{r}
+library(pkgdownissue720)
+library(repmis)
+repmis::source_data("https://raw.githubusercontent.com/madsalbertsen/ampvis2/master/data/AalborgWWTPs.rda", cache = FALSE)
+test <- amp_alphadiv(AalborgWWTPs)
+head(test)
+```
